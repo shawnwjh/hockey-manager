@@ -1,0 +1,32 @@
+<!-- <div class="table-operations">
+    <button nz-button (click)="sortByAge()">Sort age</button>
+    <button nz-button (click)="resetFilters()">Clear filters</button>
+    <button nz-button (click)="resetSortAndFilters()">Clear filters and sorters</button>
+</div> -->
+  <nz-table #sortTable [nzData]="standings" nzTableLayout="fixed">
+      <thead>
+        <tr>
+          @for (col of columns; track col) {
+            <th [nzSortFn]="col.compare" [nzSortPriority]="col.priority">
+              {{ col.title }}
+            </th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (team of standings; track team) {
+          <tr>
+            <td>{{ team.teamName.default }}</td>
+            <td>{{ team.gamesPlayed }}</td>
+            <td>{{ team.wins }}</td>
+            <td>{{ team.losses }}</td>
+            <td>{{ team.otLosses }}</td>
+            <td>{{ team.goalFor }}</td>
+            <td>{{ team.goalAgainst }}</td>
+            <td>{{ team.goalDifferential }}</td>
+            <td>{{ team.l10Wins + '-' + team.l10Losses + '-' + team.l10OtLosses }}</td>
+            <td>{{ team.points }}</td>
+          </tr>
+        }
+      </tbody>
+    </nz-table>

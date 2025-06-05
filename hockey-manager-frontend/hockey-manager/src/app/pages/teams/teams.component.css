@@ -1,0 +1,30 @@
+.team-list {
+    height: 70vh;
+    overflow-y: auto;
+}
+
+.team-container {
+    margin: 0;
+    padding: 0;
+}
+
+.team-card {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.team-card:hover {
+    background-color: rgba(0, 0, 0, 0.150);
+}
+
+.team-logo {
+    margin: 100px;
+}
+
+.ant-tabs-nav {
+    width: 200px;
+}

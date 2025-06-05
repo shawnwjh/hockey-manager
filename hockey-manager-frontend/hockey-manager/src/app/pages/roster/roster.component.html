@@ -1,0 +1,67 @@
+<h1>{{ teamAbbrev }}</h1>
+<div *ngIf="isLoading">Loading teams...</div>
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+<nz-tabset
+    style="height:fit-content;"
+    nzTabPosition="left"
+>
+    <nz-tab nzTitle="Forwards">
+        <ul class="roster-container" *ngIf="!isLoading && !errorMessage && roster.forwards.length > 0">
+            <div class="roster-list">
+                <nz-list nzGrid>
+                <div nz-row [nzGutter]="16">
+                    @for (player of roster.forwards; track player) {
+                    <div nz-col [nzSpan]="6">
+                        <nz-list-item>
+                        <nz-card class="player-card" [nzTitle]="player.firstName.default + ' ' + player.lastName.default">
+                            <img width="100px" [src]="player.headshot" alt="logo">
+                        </nz-card>
+                        </nz-list-item>
+                    </div>
+                    }
+                </div>
+                </nz-list>
+            </div>
+        </ul>
+    </nz-tab>
+    <nz-tab nzTitle="Defensemen">
+        <ul class="roster-container" *ngIf="!isLoading && !errorMessage && roster.defensemen.length > 0">
+            <div class="roster-list">
+                <nz-list nzGrid>
+                <div nz-row [nzGutter]="16">
+                    @for (player of roster.defensemen; track player) {
+                    <div nz-col [nzSpan]="6">
+                        <nz-list-item>
+                        <nz-card class="player-card" [nzTitle]="player.firstName.default + ' ' + player.lastName.default">
+                            <img width="100px" [src]="player.headshot" alt="logo">
+                        </nz-card>
+                        </nz-list-item>
+                    </div>
+                    }
+                </div>
+                </nz-list>
+            </div>
+        </ul>
+    </nz-tab>
+    <nz-tab nzTitle="Goalies">
+        <ul class="roster-container" *ngIf="!isLoading && !errorMessage && roster.goalies.length > 0">
+            <div class="roster-list">
+                <nz-list nzGrid>
+                <div nz-row [nzGutter]="16">
+                    @for (player of roster.goalies; track player) {
+                    <div nz-col [nzSpan]="6">
+                        <nz-list-item>
+                        <nz-card class="player-card" [nzTitle]="player.firstName.default + ' ' + player.lastName.default">
+                            <img width="100px" [src]="player.headshot" alt="logo">
+                        </nz-card>
+                        </nz-list-item>
+                    </div>
+                    }
+                </div>
+                </nz-list>
+            </div>
+        </ul>
+    </nz-tab>
+</nz-tabset>
+<div *ngIf="!isLoading && !errorMessage && roster.forwards.length === 0">No roster found.</div>

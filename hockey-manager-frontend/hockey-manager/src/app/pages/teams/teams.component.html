@@ -1,0 +1,101 @@
+<h1>Teams</h1>
+
+<nz-tabset nzCentered>
+    <nz-tab nzTitle="Eastern Conference">
+        <nz-tabset
+        
+            style="height:fit-content;"
+            nzTabPosition="left"
+        >
+            <nz-tab nzTitle="Atlantic Division">
+                <ul class="team-container" *ngIf="!isLoading && !errorMessage && teams.atlantic.length > 0">
+                    <div class="team-list">
+                        <nz-list nzGrid>
+                        <div nz-row [nzGutter]="0">
+                            @for (team of teams.atlantic; track team) {
+                            <div nz-col [nzSpan]="6">
+                                <nz-card class="team-card" nzHoverable style="width:240px" [nzCover]="coverTemplate" [routerLink]="['/', team.teamAbbrev.default, 'roster']">
+                                    <nz-card-meta [nzTitle]="team.teamName.default"></nz-card-meta>
+                                </nz-card>
+                                <ng-template #coverTemplate>
+                                    <img alt="logo" [src]="team.teamLogo" />
+                                </ng-template>
+                            </div>
+                            }
+                        </div>
+                        </nz-list>
+                    </div>
+                </ul>
+            </nz-tab>
+            <nz-tab nzTitle="Metropolitan Division">
+                <ul class="team-container" *ngIf="!isLoading && !errorMessage && teams.metropolitan.length > 0">
+                    <div class="team-list">
+                        <nz-list nzGrid>
+                        <div nz-row [nzGutter]="0">
+                            @for (team of teams.metropolitan; track team) {
+                            <div nz-col [nzSpan]="6">
+                                <nz-card class="team-card" nzHoverable style="width:240px" [nzCover]="coverTemplate" [routerLink]="['/', team.teamAbbrev.default, 'roster']">
+                                    <nz-card-meta [nzTitle]="team.teamName.default"></nz-card-meta>
+                                </nz-card>
+                                <ng-template #coverTemplate>
+                                    <img alt="logo" [src]="team.teamLogo" />
+                                </ng-template>
+                            </div>
+                            }
+                        </div>
+                        </nz-list>
+                    </div>
+                </ul>
+            </nz-tab>
+        </nz-tabset>
+    </nz-tab>
+    <nz-tab nzTitle="Western Conference">
+        <nz-tabset
+            style="height:fit-content;"
+            nzTabPosition="left"
+        >
+            <nz-tab nzTitle="Central Division">
+                <ul class="team-container" *ngIf="!isLoading && !errorMessage && teams.central.length > 0">
+                    <div class="team-list">
+                        <nz-list nzGrid>
+                        <div nz-row [nzGutter]="0">
+                            @for (team of teams.central; track team) {
+                            <div nz-col [nzSpan]="6">
+                                <nz-card class="team-card" nzHoverable style="width:240px" [nzCover]="coverTemplate" [routerLink]="['/', team.teamAbbrev.default, 'roster']">
+                                    <nz-card-meta [nzTitle]="team.teamName.default"></nz-card-meta>
+                                </nz-card>
+                                <ng-template #coverTemplate>
+                                    <img alt="logo" [src]="team.teamLogo" />
+                                </ng-template>
+                            </div>
+                            }
+                        </div>
+                        </nz-list>
+                    </div>
+                </ul>
+            </nz-tab>
+            <nz-tab nzTitle="Pacific Division">
+                <ul class="team-container" *ngIf="!isLoading && !errorMessage && teams.pacific.length > 0">
+                    <div class="team-list">
+                        <nz-list nzGrid>
+                        <div nz-row [nzGutter]="0">
+                            @for (team of teams.pacific; track team) {
+                            <div nz-col [nzSpan]="6">
+                                <nz-card class="team-card" nzHoverable style="width:240px" [nzCover]="coverTemplate" [routerLink]="['/', team.teamAbbrev.default, 'roster']">
+                                    <nz-card-meta [nzTitle]="team.teamName.default"></nz-card-meta>
+                                </nz-card>
+                                <ng-template #coverTemplate>
+                                    <img alt="logo" [src]="team.teamLogo" />
+                                </ng-template>
+                            </div>
+                            }
+                        </div>
+                        </nz-list>
+                    </div>
+                </ul>
+            </nz-tab>
+        </nz-tabset>
+    </nz-tab>
+</nz-tabset>
+
+<div *ngIf="!isLoading && !errorMessage && teams.atlantic.length === 0">No teams found.</div>

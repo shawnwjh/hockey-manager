@@ -1,0 +1,63 @@
+<h1>Schedule</h1>
+
+<div *ngIf="isLoading">
+    <nz-skeleton [nzActive]="true"></nz-skeleton>
+</div>
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+<ul style="margin: 0; padding: 0;" *ngIf="!isLoading && !errorMessage && games.length > 0">
+    <div class="team-list">
+       <nz-list nzBordered nzFooter="All times are in UTC">
+      @for (item of games; track item) {
+        @for (game of item.games; track game) {
+            <nz-list-item>
+                <span class="matchup" nz-typography>
+                    <div class="team" [routerLink]="['/', game.homeTeam.abbrev, 'roster']">
+                        <img width="50px" [src]="game.homeTeam.logo" alt="homeTeamLogo" />
+                        {{ game.homeTeam.placeName.default }} {{ game.homeTeam.commonName.default }}
+                    </div>
+                    <div class="team" [routerLink]="['/', game.awayTeam.abbrev, 'roster']">
+                        <img width="50px" [src]="game.awayTeam.logo" alt="awayTeamLogo" />
+                        {{ game.awayTeam.placeName.default }} {{ game.awayTeam.commonName.default }}
+                    </div>
+                </span>
+                <div>
+                    {{ game.seriesStatus.seriesTitle }}
+                </div>
+                <div class="matchupDate">
+                    <span>
+                        {{ item.date | date: 'mediumDate' }}
+                    </span>
+                    <span>
+                        {{ item.date | date: 'shortTime' }}
+                    </span>
+                </div>
+                <a [href]="game.ticketsLink">
+                    <button nz-button nzType="primary">Buy Tickets</button>
+                </a>
+            </nz-list-item>
+        }
+      }
+    </nz-list>
+    </div>
+</ul>
+
+<h1>Streams</h1>
+<div>
+    <nz-divider nzText="United States"></nz-divider>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae
+        sunt a te dicta? Refert tamen, quo modo.
+    </p>
+    <nz-divider nzText="Canada"></nz-divider>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae
+        sunt a te dicta? Refert tamen, quo modo.
+    </p>
+    <nz-divider nzText="Rest of the World"></nz-divider>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae
+        sunt a te dicta? Refert tamen, quo modo.
+    </p>
+</div>
+<div *ngIf="!isLoading && !errorMessage && games.length === 0">No schedule found.</div>

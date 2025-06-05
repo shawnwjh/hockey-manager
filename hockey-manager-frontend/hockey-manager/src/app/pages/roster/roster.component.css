@@ -1,0 +1,21 @@
+.roster-list {
+    height: 70vh;
+    overflow-y: auto;
+}
+
+.roster-container {
+    margin: 0;
+    padding: 0;
+}
+
+.player-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.player-card:hover {
+    background-color: rgba(0, 0, 0, 0.150);
+}
